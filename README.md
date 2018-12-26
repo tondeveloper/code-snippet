@@ -1,2 +1,2 @@
-# codesnippet
-various technique i have come across
+# Code Snippet
+Various code helpful vanilla code I have come across
