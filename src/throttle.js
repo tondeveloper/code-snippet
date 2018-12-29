@@ -21,7 +21,7 @@
 const throttle = (delay, fn) => {
   let lastCall = 0;
   return (...args) => {
-    const now = new Date.getTime();
+    const now = new Date.now();
     if (now - lastCall < delay) {
       return;
     }
