@@ -11,6 +11,17 @@
 */
 
 const fuzzySearch = (needle, haystack) => {
+  
+  if (
+    (typeof haystack === 'object' && haystack !== null) || typeof haystack === 'array'
+  ) {
+    try{
+      haystack = JSON.stringify(haystack)
+    }catch(e){
+      return false;
+    }
+  }
+  
   let hlen = haystack.length
   let nlen = needle.length
   if (nlen > hlen) {
