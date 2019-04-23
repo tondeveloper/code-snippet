@@ -10,20 +10,23 @@
   => ['macaroni']
 */
 
-const fuzzySearch = (needle, haystack) => {
-  
+const fuzzySearch = (dirtyNeedle, dirtyHaystack) => {
+  let needle = dirtyNeedle
+  let haystack = dirtyHaystack
+
   if (
-    (typeof haystack === 'object' && haystack !== null) || typeof haystack === 'array'
+    (typeof haystack === 'object' && haystack !== null) ||
+    typeof haystack === 'array'
   ) {
-    try{
-      haystack = JSON.stringify(haystack)
-    }catch(e){
-      return false;
-    }
+    haystack = JSON.stringify(haystack)
   }
-  
+
+  needle = needle.replace(/\s/g, '').toLowerCase()
+  haystack = haystack.replace(/\s/g, '').toLowerCase()
+
   let hlen = haystack.length
   let nlen = needle.length
+
   if (nlen > hlen) {
     return false
   }
