@@ -1,5 +1,6 @@
 /*
-	Assign value to deep nested object using recursion and value reference
+  Assign value to deep nested object using recursion and value reference.
+  This mutate the data!
 */
 
 const data = {
