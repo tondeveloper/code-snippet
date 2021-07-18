@@ -20,9 +20,16 @@ const data = {
 
 const objSetter = (obj, value, path) => {
   const [head, ...rest] = path.toString().split('.')
-  !rest.length
-    ? (obj[head] = value)
-    : objSetter(obj[head], value, rest.join('.'))
+  if(!rest.length){
+    obj[head] = value
+  }else{
+    if(obj[head] === undefined){
+      obj[head] = {}
+      objSetter(obj[head], value, rest.join('.'))
+    }else{
+      objSetter(obj[head], value, rest.join('.'))
+    }
+  }
 }
 
 objSetter(data, 8888, 'rabbit.0.dog.bird')
