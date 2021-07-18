@@ -24,7 +24,11 @@ const objSetter = (obj, value, path) => {
     obj[head] = value
   }else{
     if(obj[head] === undefined){
-      obj[head] = {}
+      if(/^\d+$/.test(rest[0])){
+        obj[head] = []
+      }else{
+        obj[head] = {}
+      } 
       objSetter(obj[head], value, rest.join('.'))
     }else{
       objSetter(obj[head], value, rest.join('.'))
